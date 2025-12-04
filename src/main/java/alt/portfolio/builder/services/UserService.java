@@ -37,9 +37,11 @@ public class UserService {
 	}
 	
 	public User editUser(UserRequestDto userRequest) {
-		User user = userRequest.toUser(new User());
-		userRepository.delete(user);
-		
+		User user = findById(userRequest.getId());
+		user.setEmail(userRequest.getEmail());
+		user.setFirstname(userRequest.getFirstname());
+		user.setLastname(userRequest.getLastname());
+		user.setUsername(userRequest.getUsername());
 		return userRepository.save(user);
 	}
 

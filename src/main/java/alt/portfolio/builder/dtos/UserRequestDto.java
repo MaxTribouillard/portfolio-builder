@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class UserRequestDto {
 
+	private UUID id;
 	private String firstname;
 	private String lastname;
 	private String username;
@@ -14,6 +15,7 @@ public class UserRequestDto {
 	
 	public User toUser(User user) {
 
+		user.setId(id);
 		user.setFirstname(firstname);
 		user.setEmail(email);
 		user.setUsername(username);

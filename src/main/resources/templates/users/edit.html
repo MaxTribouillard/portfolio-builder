@@ -5,6 +5,7 @@
 
 <form class="" method="post" action="/users/edit">
 {{#user}}
+<div class="ui input"><input type="text" style="display:none;" name="id" value="{{id}}"></div>
 <div class="ui input"><input type="text" placeholder="Prénom" name="firstname" value="{{firstname}}"></div>
 <div class="ui input"><input type="text" placeholder="Nom" name="lastname" value="{{lastname}}"></div>
 <div class="ui input"><input type="text" placeholder="Login" name="username" value="{{username}}"></div>
