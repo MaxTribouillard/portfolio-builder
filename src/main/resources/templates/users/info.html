@@ -1,0 +1,19 @@
+{{ > partials/header}}
+
+<h1>Information sur l'utilisateur : </h1>
+{{#user}}
+<div class="ui grid">
+
+
+  <div class="four wide column">Nom</div>
+  <div class="four wide column">Prénom</div>
+  <div class="four wide column">Mail</div>
+  <div class="four wide column">Username</div>
+  <div class="four wide column">{{lastname}}</div>
+  <div class="four wide column">{{firstname}}</div>
+  <div class="four wide column">{{email}}</div>
+  <div class="four wide column">{{username}}</div>
+</div>
+{{/user}}
+
+{{ > partials/footer}}

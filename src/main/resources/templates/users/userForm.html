@@ -1,0 +1,16 @@
+
+{{ > partials/header}}
+
+<h1>Ajouter un utilisateur</h1>
+
+<form class="" method="post" action="/users/create">
+{{#user}}
+<div class="ui input"><input type="text" placeholder="Prénom" name="firstname" value="{{firstname}}"></div>
+<div class="ui input"><input type="text" placeholder="Nom" name="lastname" value="{{lastname}}"></div>
+<div class="ui input"><input type="text" placeholder="Login" name="username" value="{{username}}"></div>
+<div class="ui input"><input type="email" placeholder="email" name="email" value="{{email}}"></div>
+<button class="ui button" type="submit">Valider</button>
+{{/user}}
+</form>
+
+{{ > partials/footer}}
