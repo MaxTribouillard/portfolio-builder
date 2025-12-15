@@ -1,0 +1,26 @@
+{{ > partials/header}}
+
+<h1>Utilisateurs ({{users.size}})</h1>
+
+
+
+<div class="ui two column grid">
+  
+
+
+<div class="left attached column">Nom prénom</div>
+ <div class="right attached column">Action</div>
+{{#users}}
+<div class="left attached column">{{lastname}} {{firstname}}</div>
+ <div class="right attached column">
+ 	<a href="./users/info/{{id}}"><button class="ui button">Informations</button></a> 
+ 	<a href="./users/edit/{{id}}"><button class="ui button">Modifier</button></a> 
+ 	<a href="./users/supprimer/{{id}}"><button class="ui button">Supprimer</button></a>
+ </div>
+{{/users}}
+</div>
+<a href="/users/create"><button class="ui button">Ajouter un utilisateur</button></a>
+{{^users}}
+{{/users}}
+
+{{ > partials/footer}}

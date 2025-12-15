@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import alt.portfolio.builder.dtos.UserRequestDto;
 import alt.portfolio.builder.entities.User;
+import alt.portfolio.builder.services.DbUserService;
 import alt.portfolio.builder.services.UserService;
 
 @RequestMapping("users")
@@ -23,6 +25,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private DbUserService dbUserService;
 	
 	@GetMapping(path= {"" , "/"})
 	public ModelAndView index() {
@@ -63,6 +68,14 @@ public class UserController {
 	public RedirectView applyEdit(@ModelAttribute UserRequestDto editedUser) {
 		User user = userService.editUser(editedUser);
 		return new RedirectView("/users");
+	}
+	
+	@GetMapping("/register/{username}/{password}")
+	@ResponseBody
+	public User createUser(@PathVariable String username, @PathVariable String password) {
+		User user = dbUserService.createUser(username, password);
+		return user;
+		
 	}
 	
 	
