@@ -1,0 +1,51 @@
+{{> partials/header}}
+
+<div class="ui container">
+
+  <h1 class="ui dividing header">
+    <i class="users icon"></i>
+    <div class="content">
+      Gérer vos profils
+      <div class="sub header">Ajoutez, consultez et gérez vos profils</div>
+    </div>
+  </h1>
+
+  <a href="../createprofiles/{{id}}" class="ui primary button">
+    <i class="plus icon"></i>
+    Ajouter un profil
+  </a>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui three stackable cards">
+
+    {{#profiles}}
+    <div class="card">
+      <div class="content">
+        <div class="header">{{name}}</div>
+        <div class="meta">Profil utilisateur</div>
+        <div class="description">
+          {{description}}
+        </div>
+      </div>
+
+      <div class="extra content">
+        <div class="ui two buttons">
+          <a href="../profiles/edit/{{id}}" class="ui basic blue button">
+            <i class="edit icon"></i>
+            Modifier
+          </a>
+          <a href="../profiles/delete/{{id}}" class="ui basic red button">
+            <i class="trash icon"></i>
+            Supprimer
+          </a>
+        </div>
+      </div>
+    </div>
+    {{/profiles}}
+
+  </div>
+
+</div>
+
+{{> partials/footer}}

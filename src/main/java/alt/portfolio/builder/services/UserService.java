@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import alt.portfolio.builder.dtos.UserRequestDto;
+import alt.portfolio.builder.entities.Profile;
 import alt.portfolio.builder.entities.User;
 import alt.portfolio.builder.repositories.UserRepository;
 
@@ -20,10 +21,12 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+
 	
 	public List<User> getUsers(){
 		return userRepository.findAll();
 	}
+	
 	
 	public User createUser(UserRequestDto userRequest) {
 		User user = userRequest.toUser(new User());	
@@ -31,7 +34,7 @@ public class UserService {
 	}
 	
 	public User findById(UUID userId) {
-		User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));;
+		User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
 		return user;
 	}
 	
@@ -47,6 +50,8 @@ public class UserService {
 		user.setUsername(userRequest.getUsername());
 		return userRepository.save(user);
 	}
+	
+	
 
 
 }

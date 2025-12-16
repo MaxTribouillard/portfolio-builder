@@ -1,0 +1,16 @@
+
+{{ > partials/header}}
+
+<h1>Ajouter un profil</h1>
+
+<form class="" method="post" action="/users/createprofiles/{{userId}}">
+{{#profiles}}
+<div class="ui input"><input type="text" style="display:none;" name="id" value="{{owner}}"></div>
+<div class="ui input"><input type="text" style="display:none;" name="id" value="{{id}}"></div>
+<div class="ui input"><input type="text" placeholder="Titre" name="name" value="{{name}}"></div>
+<div class="ui input"><input type="text" placeholder="Descriptif" name="description" value="{{description}}"></div>
+<button class="ui button" type="submit">Valider</button>
+{{/profiles}}
+</form>
+
+{{ > partials/footer}}

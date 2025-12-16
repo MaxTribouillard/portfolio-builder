@@ -1,26 +1,68 @@
-{{ > partials/header}}
+{{> partials/header}}
 
-<h1>Utilisateurs ({{users.size}})</h1>
+<div class="ui container">
 
+  <h1 class="ui dividing header">
+    <i class="users icon"></i>
+    <div class="content">
+      Utilisateurs
+      <div class="sub header">{{users.size}} utilisateur(s)</div>
+    </div>
+  </h1>
 
+  <a href="/users/create" class="ui primary button">
+    <i class="user plus icon"></i>
+    Ajouter un utilisateur
+  </a>
 
-<div class="ui two column grid">
-  
+  <div class="ui hidden divider"></div>
 
+  {{#users}}
+  <table class="ui celled striped table">
+    <thead>
+      <tr>
+        <th>Nom & Prénom</th>
+        <th class="right aligned">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#users}}
+      <tr>
+        <td>
+          <i class="user circle icon"></i>
+          {{lastname}} {{firstname}}
+        </td>
+        <td class="right aligned">
+          <a href="./users/profiles/{{id}}" class="ui mini button">
+            <i class="id badge icon"></i>
+            Profils
+          </a>
+          <a href="./users/info/{{id}}" class="ui mini button">
+            <i class="info circle icon"></i>
+            Infos
+          </a>
+          <a href="./users/edit/{{id}}" class="ui mini blue button">
+            <i class="edit icon"></i>
+            Modifier
+          </a>
+          <a href="./users/supprimer/{{id}}" class="ui mini red button">
+            <i class="trash icon"></i>
+            Supprimer
+          </a>
+        </td>
+      </tr>
+      {{/users}}
+    </tbody>
+  </table>
+  {{/users}}
 
-<div class="left attached column">Nom prénom</div>
- <div class="right attached column">Action</div>
-{{#users}}
-<div class="left attached column">{{lastname}} {{firstname}}</div>
- <div class="right attached column">
- 	<a href="./users/info/{{id}}"><button class="ui button">Informations</button></a> 
- 	<a href="./users/edit/{{id}}"><button class="ui button">Modifier</button></a> 
- 	<a href="./users/supprimer/{{id}}"><button class="ui button">Supprimer</button></a>
- </div>
-{{/users}}
+  {{^users}}
+  <div class="ui warning message">
+    <i class="warning icon"></i>
+    Aucun utilisateur trouvé.
+  </div>
+  {{/users}}
+
 </div>
-<a href="/users/create"><button class="ui button">Ajouter un utilisateur</button></a>
-{{^users}}
-{{/users}}
 
-{{ > partials/footer}}
+{{> partials/footer}}
