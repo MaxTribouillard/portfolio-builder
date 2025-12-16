@@ -1,21 +1,18 @@
 package alt.portfolio.builder.repositories;
 
-
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import alt.portfolio.builder.entities.Profile;
-import alt.portfolio.builder.entities.User;
 
 @Repository
-public interface ProfileRepository extends JpaRepository<Profile, UUID>{
+public interface ProfileRepository extends JpaRepository<Profile, UUID> {
 
 	public Profile findProfileById(UUID id);
-	
-	public List<Profile> findProfilesByOwnerId(UUID owner_id);
-	
+
+	public List<Profile> findProfilesByOwnerIdOrderByName(UUID owner_id);
+
 }

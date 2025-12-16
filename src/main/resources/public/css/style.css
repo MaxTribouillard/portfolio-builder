@@ -1,0 +1,121 @@
+/* Global variables and reset */
+:root{
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb; /* blue-600 */
+  --accent-600: #1d4ed8;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --shadow-sm: 0 1px 2px rgba(16,24,40,0.06);
+  --shadow-md: 0 6px 18px rgba(16,24,40,0.08);
+  --radius: 12px;
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg, var(--bg), #ffffff);
+  color: #0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.4;
+  font-size:16px;
+}
+
+/* Container */
+.users-page{
+  max-width:1100px;
+  margin:36px auto;
+  padding:28px;
+}
+
+/* Header */
+.page-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+.title-block{display:flex;gap:14px;align-items:center}
+.title-block i.users.icon{
+  display:inline-grid;
+  place-items:center;
+  width:56px;height:56px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-600));
+  color:#fff;border-radius:12px;box-shadow:var(--shadow-md);
+  font-size:20px;
+}
+.title-block h1{margin:0;font-size:22px}
+.title-block .muted{margin:0;color:var(--muted);font-size:14px}
+
+.header-actions{display:flex;gap:12px;align-items:center}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid transparent;text-decoration:none;color:inherit;font-weight:600;font-size:14px;background:transparent;cursor:pointer;transition:all .18s ease;
+}
+.btn i{opacity:0.9}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm);border-color:transparent}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-ghost{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:9px 12px;border-radius:8px}
+.btn-danger{background:var(--danger);color:#fff}
+.btn.small{padding:6px 10px;font-size:13px}
+
+/* Spacer */
+.spacer{height:18px}
+
+/* Grid */
+.users-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;margin-top:18px;
+}
+
+.user-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(15,23,42,0.04);
+}
+.card-media{padding:18px 18px 0}
+.avatar{
+  width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,#fd7e14,#f97316);display:inline-grid;place-items:center;color:#fff;font-weight:700;font-size:20px;box-shadow:0 6px 16px rgba(249,115,22,0.14)
+}
+.card-body{padding:14px 18px 6px}
+.user-name{margin:0;font-size:16px}
+.card-meta{color:var(--muted);font-size:13px;margin-top:6px}
+.card-actions{display:flex;gap:8px;padding:14px 18px 18px;border-top:1px solid rgba(15,23,42,0.04);flex-wrap:wrap}
+
+.card-actions .btn{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:8px 10px;border-radius:8px}
+.card-actions .btn-primary{background:var(--accent);color:#fff}
+.card-actions .btn-danger{background:transparent;color:var(--danger);border-color:rgba(239,68,68,0.12)}
+
+/* Empty state */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;background:linear-gradient(180deg,rgba(37,99,235,0.03),transparent);border-radius:12px;border:1px dashed rgba(15,23,42,0.04);margin-top:18px}
+.empty-icon{font-size:34px;margin-bottom:8px}
+.empty-state h3{margin:6px 0}
+.empty-state p{color:var(--muted)}
+
+/* Responsive */
+@media (max-width:980px){
+  .users-page{padding:20px;margin:24px}
+  .users-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .page-header{flex-direction:column;align-items:flex-start}
+  .title-block i.users.icon{width:48px;height:48px}
+  .users-grid{grid-template-columns:1fr}
+  .card-actions{justify-content:flex-start}
+}
+
+/* Accessibility focus states */
+.btn:focus{outline:3px solid rgba(37,99,235,0.18);outline-offset:2px}
+
+/* Utility */
+.muted{color:var(--muted)}
+
+/* Small polish for semantic elements inside header/footer partials if present */
+header.site-header, footer.site-footer{max-width:1100px;margin:0 auto;padding:12px 28px}

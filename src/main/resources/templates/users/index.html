@@ -1,65 +1,65 @@
 {{> partials/header}}
 
-<div class="ui container">
+<div class="ui container users-page">
 
-  <h1 class="ui dividing header">
-    <i class="users icon"></i>
-    <div class="content">
-      Utilisateurs
-      <div class="sub header">{{users.size}} utilisateur(s)</div>
+  <header class="page-header">
+    <div class="title-block">
+      <i class="users icon" aria-hidden="true"></i>
+      <div>
+        <h1>Utilisateurs</h1>
+        <p class="muted">{{users.size}} utilisateur(s)</p>
+      </div>
     </div>
-  </h1>
 
-  <a href="/users/create" class="ui primary button">
-    <i class="user plus icon"></i>
-    Ajouter un utilisateur
-  </a>
+    <div class="header-actions">
+      <a href="/users/create" class="btn btn-primary">
+        <i class="user plus icon" aria-hidden="true"></i>
+        <span>Ajouter un utilisateur</span>
+      </a>
+    </div>
+  </header>
 
-  <div class="ui hidden divider"></div>
+  <div class="spacer"></div>
 
   {{#users}}
-  <table class="ui celled striped table">
-    <thead>
-      <tr>
-        <th>Nom & Prénom</th>
-        <th class="right aligned">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#users}}
-      <tr>
-        <td>
-          <i class="user circle icon"></i>
-          {{lastname}} {{firstname}}
-        </td>
-        <td class="right aligned">
-          <a href="./users/profiles/{{id}}" class="ui mini button">
-            <i class="id badge icon"></i>
-            Profils
-          </a>
-          <a href="./users/info/{{id}}" class="ui mini button">
-            <i class="info circle icon"></i>
-            Infos
-          </a>
-          <a href="./users/edit/{{id}}" class="ui mini blue button">
-            <i class="edit icon"></i>
-            Modifier
-          </a>
-          <a href="./users/supprimer/{{id}}" class="ui mini red button">
-            <i class="trash icon"></i>
-            Supprimer
-          </a>
-        </td>
-      </tr>
-      {{/users}}
-    </tbody>
-  </table>
+  <section class="users-grid" aria-label="Liste des utilisateurs">
+    {{#users}}
+    <article class="user-card" role="article">
+      <div class="card-media">
+        <div class="avatar" aria-hidden="true"><i class="user circle icon" aria-hidden="true"></i></div>
+      </div>
+      <div class="card-body">
+        <h2 class="user-name">{{lastname}} {{firstname}}</h2>
+        <div class="card-meta"></div>
+      </div>
+      <div class="card-actions" role="group" aria-label="Actions utilisateur">
+        <a href="./users/profiles/{{id}}" class="btn btn-ghost">
+          <i class="id badge icon" aria-hidden="true"></i>
+          Profils
+        </a>
+        <a href="./users/info/{{id}}" class="btn btn-ghost">
+          <i class="info circle icon" aria-hidden="true"></i>
+          Infos
+        </a>
+        <a href="./users/edit/{{id}}" class="btn btn-primary small">
+          <i class="edit icon" aria-hidden="true"></i>
+          Modifier
+        </a>
+        <a href="./users/supprimer/{{id}}" class="btn btn-danger small">
+          <i class="trash icon" aria-hidden="true"></i>
+          Supprimer
+        </a>
+      </div>
+    </article>
+    {{/users}}
+  </section>
   {{/users}}
 
   {{^users}}
-  <div class="ui warning message">
-    <i class="warning icon"></i>
-    Aucun utilisateur trouvé.
+  <div class="empty-state" role="status">
+    <div class="empty-icon">⚠️</div>
+    <h3>Aucun utilisateur trouvé</h3>
+    <p class="muted">Vous pouvez ajouter un nouvel utilisateur en cliquant sur "Ajouter un utilisateur".</p>
   </div>
   {{/users}}
 
