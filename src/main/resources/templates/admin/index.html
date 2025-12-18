@@ -12,7 +12,7 @@
     </div>
 
     <div class="header-actions">
-      <a href="/users/create" class="btn btn-primary">
+      <a href="/admin/create" class="btn btn-primary">
         <i class="user plus icon" aria-hidden="true"></i>
         <span>Ajouter un utilisateur</span>
       </a>
@@ -21,7 +21,7 @@
 
   <div class="spacer"></div>
 
-  {{#users}}
+
   <section class="users-grid" aria-label="Liste des utilisateurs">
     {{#users}}
     <article class="user-card" role="article">
@@ -33,19 +33,19 @@
         <div class="card-meta"></div>
       </div>
       <div class="card-actions" role="group" aria-label="Actions utilisateur">
-        <a href="./users/profiles/{{id}}" class="btn btn-ghost">
+        <a href="/admin/profiles/{{id}}" class="btn btn-ghost">
           <i class="id badge icon" aria-hidden="true"></i>
           Profils
         </a>
-        <a href="./users/info/{{id}}" class="btn btn-ghost">
+        <a href="/admin/info/{{id}}" class="btn btn-ghost">
           <i class="info circle icon" aria-hidden="true"></i>
           Infos
         </a>
-        <a href="./users/edit/{{id}}" class="btn btn-primary small">
+        <a href="/admin/edit/{{id}}" class="btn btn-primary small">
           <i class="edit icon" aria-hidden="true"></i>
           Modifier
         </a>
-        <a href="./users/supprimer/{{id}}" class="btn btn-danger small">
+        <a href="/admin/supprimer/{{id}}" class="btn btn-danger small">
           <i class="trash icon" aria-hidden="true"></i>
           Supprimer
         </a>
@@ -53,7 +53,7 @@
     </article>
     {{/users}}
   </section>
-  {{/users}}
+
 
   {{^users}}
   <div class="empty-state" role="status">

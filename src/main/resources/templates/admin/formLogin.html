@@ -1,0 +1,19 @@
+{{ > partials/header}}
+
+<h1>Connexion</h1>
+
+<form method="post" action="./login" class="login-form">
+    <div class="form-row">
+      <label for="username">Identifiant</label>
+      <input id="username" type="text" name="username" placeholder="E-mail address or username">
+    </div>
+    <div class="form-row">
+      <label for="password">Mot de passe</label>
+      <input id="password" type="password" name="password" placeholder="Password">
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Se connecter</button>
+    </div>
+</form>
+
+{{ > partials/footer}}

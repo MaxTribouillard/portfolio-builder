@@ -14,44 +14,43 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 import alt.portfolio.builder.services.DbUserService;
-import alt.portfolio.builder.services.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
- 
+
 	@Bean
-    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
-                        (req) -> req.requestMatchers(
-                                PathPatternRequestMatcher.withDefaults().matcher("/"),
-                                PathPatternRequestMatcher.withDefaults().matcher("/css/**"),
-                                PathPatternRequestMatcher.withDefaults().matcher("/js/**"),
-                                PathPatternRequestMatcher.withDefaults().matcher("/img/**"),
-                                PathPatternRequestMatcher.withDefaults().matcher("/users/register/**")
-                                )
-                                .permitAll()
-                                .anyRequest()
-                                .authenticated()).csrf(AbstractHttpConfigurer::disable).formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/users", true).permitAll());
-        return http.build();
-    }
-	
+	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
+		http.csrf(AbstractHttpConfigurer::disable)
+				.authorizeHttpRequests((req) -> req
+						.requestMatchers(PathPatternRequestMatcher.withDefaults().matcher("/"),
+								PathPatternRequestMatcher.withDefaults().matcher("/css/**"),
+								PathPatternRequestMatcher.withDefaults().matcher("/js/**"),
+								PathPatternRequestMatcher.withDefaults().matcher("/img/**"),
+								PathPatternRequestMatcher.withDefaults().matcher("/admin/register/**"),
+								PathPatternRequestMatcher.withDefaults().matcher("/index/**"))
+						.permitAll().anyRequest().authenticated())
+				.csrf(AbstractHttpConfigurer::disable)
+				.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/admin", true).permitAll());
+		return http.build();
+	}
+
 	@Primary
-    @Bean
-    public UserDetailsService getUserDetailsService() {
-        return new DbUserService();
-    }
- 
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-    
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider(UserDetailsService userService) {
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider(userService);
-        auth.setPasswordEncoder(getPasswordEncoder());
-        return auth;
-    }
-	
+	@Bean
+	public UserDetailsService getUserDetailsService() {
+		return new DbUserService();
+	}
+
+	@Bean
+	public PasswordEncoder getPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public DaoAuthenticationProvider authenticationProvider(UserDetailsService userService) {
+		DaoAuthenticationProvider auth = new DaoAuthenticationProvider(userService);
+		auth.setPasswordEncoder(getPasswordEncoder());
+		return auth;
+	}
+
 }

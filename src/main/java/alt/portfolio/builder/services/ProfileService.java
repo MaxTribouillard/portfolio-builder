@@ -35,6 +35,14 @@ public class ProfileService {
 		profilRepository.deleteById(profileId);
 	}
 
+	public Profile editProfile(UUID profileId, Profile profile) {
+		Profile profileToEdit = profilRepository.findById(profileId)
+				.orElseThrow(() -> new RuntimeException("User not found"));
+		profileToEdit.setDescription(profile.getDescription());
+		profileToEdit.setName(profile.getName());
+		return profilRepository.save(profileToEdit);
+	}
+
 //	public List<Profile> showProfiles(UUID id) {
 //		User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
 //		user.getProfiles();

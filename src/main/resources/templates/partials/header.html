@@ -2,9 +2,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portfolio Builder</title>
 <!-- Load Semantic UI CSS so icon classes (e.g. "user circle icon") render correctly -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+<!-- Main site stylesheet -->
+<link rel="stylesheet" href="/css/main.css">
+<!-- Legacy or page-specific overrides (kept for compatibility) -->
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="ui container">
+<body class="site-container">
+<header class="site-header">
+  <a href="/" class="site-brand">
+    <div class="logo"><i class="users icon" aria-hidden="true"></i></div>
+    <div>
+      <h1 class="site-title">Portfolio Builder</h1>
+      <p class="site-sub">Gérer vos contenus simplement</p>
+    </div>
+  </a>
+  <nav class="nav-actions">
+    <a href="/admin" class="btn btn-ghost">Utilisateurs</a>
+    <a href="/admin/profiles" class="btn btn-ghost">Profils</a>
+    <a href="/login" class="btn btn-ghost">Connexion</a>
+  </nav>
+</header>

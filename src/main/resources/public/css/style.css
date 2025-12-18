@@ -119,3 +119,34 @@ body{
 
 /* Small polish for semantic elements inside header/footer partials if present */
 header.site-header, footer.site-footer{max-width:1100px;margin:0 auto;padding:12px 28px}
+
+/* Fix pour les icônes Semantic UI - retirer la hauteur fixe pour un meilleur alignement */
+i.icon {
+  height: auto !important;
+}
+
+/* Fix pour les cartes Semantic UI - largeur complète */
+.ui.three.cards > .card {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.ui.three.cards {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2em !important;
+}
+
+/* Responsive pour les cartes de profils */
+@media (max-width: 991px) {
+  .ui.three.stackable.cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .ui.three.stackable.cards {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -16,7 +16,7 @@ import alt.portfolio.builder.entities.User;
 import alt.portfolio.builder.repositories.UserRepository;
 
 @Service
-public class UserService {
+public class AdminService {
 	
 	@Autowired
 	private UserRepository userRepository;

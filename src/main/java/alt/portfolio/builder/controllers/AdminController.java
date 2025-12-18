@@ -19,14 +19,14 @@ import alt.portfolio.builder.entities.Profile;
 import alt.portfolio.builder.entities.User;
 import alt.portfolio.builder.services.DbUserService;
 import alt.portfolio.builder.services.ProfileService;
-import alt.portfolio.builder.services.UserService;
+import alt.portfolio.builder.services.AdminService;
 
-@RequestMapping("users")
+@RequestMapping("admin")
 @Controller
-public class UserController {
+public class AdminController {
 
 	@Autowired
-	private UserService userService;
+	private AdminService adminService;
 
 	@Autowired
 	private ProfileService profileService;
@@ -36,43 +36,43 @@ public class UserController {
 
 	@GetMapping(path = { "", "/" })
 	public ModelAndView index() {
-		return new ModelAndView("users/index", "users", userService.getUsers());
+		return new ModelAndView("admin/index", "users", adminService.getUsers());
 	}
 
 	@GetMapping("/create")
 	public String create(ModelMap model) {
 		model.addAttribute("user", new User());
-		return "users/userForm";
+		return "admin/userForm";
 	}
 
 	@PostMapping("/create")
 	public RedirectView createUser(@ModelAttribute UserRequestDto createdUser) {
-		User user = userService.createUser(createdUser);
-		return new RedirectView("/users");
+		User user = adminService.createUser(createdUser);
+		return new RedirectView("/admin");
 	}
 
 	@GetMapping("/supprimer/{id}")
 	public String delete(@PathVariable UUID id) {
-		userService.deleteById(id);
-		return "users/supprimer";
+		adminService.deleteById(id);
+		return "admin/supprimer";
 	}
 
 	@GetMapping("/info/{id}")
 	public String info(@PathVariable UUID id, ModelMap model) {
-		model.addAttribute("user", userService.findById(id));
-		return "users/info";
+		model.addAttribute("user", adminService.findById(id));
+		return "admin/info";
 	}
 
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable UUID id, ModelMap model) {
-		model.addAttribute("user", userService.findById(id));
-		return "users/edit";
+		model.addAttribute("user", adminService.findById(id));
+		return "admin/edit";
 	}
 
 	@PostMapping("/edit")
 	public RedirectView applyEdit(@ModelAttribute UserRequestDto editedUser) {
-		User user = userService.editUser(editedUser);
-		return new RedirectView("/users");
+		User user = adminService.editUser(editedUser);
+		return new RedirectView("/admin");
 	}
 
 	@GetMapping("/register/{username}/{password}")
@@ -86,29 +86,40 @@ public class UserController {
 	@GetMapping("/profiles/{id}")
 	public String showProfiles(@PathVariable UUID id, ModelMap model) {
 		model.addAttribute("profiles", profileService.showUserProfiles(id));
-		return "users/profiles";
+		return "admin/profiles";
 	}
 
 	@GetMapping("/createprofiles/{userId}")
 	public String createProfiles(ModelMap model, @PathVariable UUID userId) {
 		model.addAttribute("profiles", new Profile());
 		model.addAttribute("userId", userId);
-		return "users/createprofiles";
+		return "admin/createprofiles";
 	}
 
 	@PostMapping("/createprofiles/{ownerId}")
 	public RedirectView addProfiles(@ModelAttribute Profile profile, @PathVariable UUID ownerId) {
 		Profile profil = profileService.createProfile(profile, ownerId);
-		return new RedirectView("/users");
+		return new RedirectView("/admin");
 	}
 
 	@GetMapping("/profiles/delete/{profileId}")
 	public String deleteProfile(@PathVariable UUID profileId) {
 		profileService.deleteProfile(profileId);
-		return "users/deleteprofile";
+		return "admin/deleteprofile";
 
 	}
 
+	@GetMapping("/profiles/edit/{profileId}")
+	public String editProfileForm(@PathVariable UUID profileId, ModelMap model) {
+		model.addAttribute("profile", new Profile());
+		return "admin/editprofile";
+	}
+
+	@PostMapping("editprofiles/{profileId}")
+	public RedirectView editProfile(@PathVariable UUID profileId, @ModelAttribute Profile profile) {
+		Profile profil = profileService.editProfile(profileId, profile);
+		return new RedirectView("/admin");
+	}
 //	@GetMapping("/profils/{id}")
 //	public User userProfiles() {
 //		//User user = userService.showProfiles();

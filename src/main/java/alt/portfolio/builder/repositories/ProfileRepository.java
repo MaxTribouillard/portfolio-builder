@@ -14,5 +14,4 @@ public interface ProfileRepository extends JpaRepository<Profile, UUID> {
 	public Profile findProfileById(UUID id);
 
 	public List<Profile> findProfilesByOwnerIdOrderByName(UUID owner_id);
-
 }
