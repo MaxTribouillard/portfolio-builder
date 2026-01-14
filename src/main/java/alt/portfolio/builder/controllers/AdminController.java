@@ -17,9 +17,9 @@ import org.springframework.web.servlet.view.RedirectView;
 import alt.portfolio.builder.dtos.UserRequestDto;
 import alt.portfolio.builder.entities.Profile;
 import alt.portfolio.builder.entities.User;
+import alt.portfolio.builder.services.AdminService;
 import alt.portfolio.builder.services.DbUserService;
 import alt.portfolio.builder.services.ProfileService;
-import alt.portfolio.builder.services.AdminService;
 
 @RequestMapping("admin")
 @Controller
@@ -120,6 +120,15 @@ public class AdminController {
 		Profile profil = profileService.editProfile(profileId, profile);
 		return new RedirectView("/admin");
 	}
+
+	@GetMapping("profiles/display/{profileId}")
+	public String showProfile(@PathVariable UUID profileId, ModelMap model) {
+		Profile profil = profileService.getProfileById(profileId);
+		System.out.println("PROFILE ID : " + profil.getName());
+		model.put("profile", profileService.getProfileById(profileId));
+		return "admin/display";
+	}
+
 //	@GetMapping("/profils/{id}")
 //	public User userProfiles() {
 //		//User user = userService.showProfiles();

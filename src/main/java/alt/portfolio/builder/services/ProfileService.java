@@ -43,6 +43,11 @@ public class ProfileService {
 		return profilRepository.save(profileToEdit);
 	}
 
+	public Profile getProfileById(UUID profileId) {
+		Profile profil = profilRepository.findProfileById(profileId);
+		return profil;
+	}
+
 //	public List<Profile> showProfiles(UUID id) {
 //		User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
 //		user.getProfiles();
