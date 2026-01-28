@@ -15,6 +15,9 @@ public class MainAdvice {
 
 	@ModelAttribute("activeUser")
 	public User getActiveUser(Authentication auth) {
+		if (auth == null || !auth.isAuthenticated() || "anonymousUser".equals(auth.getPrincipal())) {
+			return null;
+		}
 		return (User) auth.getPrincipal();
 	}
 

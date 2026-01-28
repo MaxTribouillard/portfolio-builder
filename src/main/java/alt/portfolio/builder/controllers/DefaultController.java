@@ -9,10 +9,15 @@ public class DefaultController {
 
 	@GetMapping("/default")
 	public String redirectAfterLogin(Authentication authentication) {
-		if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+		if (authentication.getAuthorities().stream().anyMatch(a -> "ROLE_ADMIN".equals(a.getAuthority()))) {
 			return "redirect:/admin";
 		}
 		return "redirect:/user/dashboard";
+	}
+
+	@GetMapping(path = {"", "/"})
+	public String index() {
+		return "index";
 	}
 
 }
