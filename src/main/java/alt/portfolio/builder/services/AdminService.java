@@ -1,47 +1,43 @@
 package alt.portfolio.builder.services;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import alt.portfolio.builder.dtos.UserRequestDto;
-import alt.portfolio.builder.entities.Profile;
 import alt.portfolio.builder.entities.User;
+import alt.portfolio.builder.exceptions.EntityNotFoundExceptions;
 import alt.portfolio.builder.repositories.UserRepository;
 
 @Service
 public class AdminService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
-
-	
-	public List<User> getUsers(){
+	public List<User> getUsers() {
 		return userRepository.findAll();
 	}
-	
-	
+
 	public User createUser(UserRequestDto userRequest) {
-		User user = userRequest.toUser(new User());	
+		User user = userRequest.toUser(new User());
 		return userRepository.save(user);
 	}
-	
+
 	public User findById(UUID userId) {
 		User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
 		return user;
 	}
-	
-	public void deleteById(UUID userId) { 	
+
+	public void deleteById(UUID userId) throws EntityNotFoundExceptions {
+		if (userRepository.findById(userId).isEmpty()) {
+			throw new EntityNotFoundExceptions("Utilisateur non trouvé pour suppression");
+		}
 		userRepository.deleteById(userId);
 	}
-	
+
 	public User editUser(UserRequestDto userRequest) {
 		User user = findById(userRequest.getId());
 		user.setEmail(userRequest.getEmail());
@@ -50,8 +46,5 @@ public class AdminService {
 		user.setUsername(userRequest.getUsername());
 		return userRepository.save(user);
 	}
-	
-	
-
 
 }

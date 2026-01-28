@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import alt.portfolio.builder.dtos.UserRequestDto;
 import alt.portfolio.builder.entities.Profile;
 import alt.portfolio.builder.entities.User;
+import alt.portfolio.builder.exceptions.EntityNotFoundExceptions;
 import alt.portfolio.builder.services.AdminService;
 import alt.portfolio.builder.services.DbUserService;
 import alt.portfolio.builder.services.ProfileService;
@@ -52,7 +53,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/supprimer/{id}")
-	public String delete(@PathVariable UUID id) {
+	public String delete(@PathVariable UUID id) throws EntityNotFoundExceptions {
 		adminService.deleteById(id);
 		return "admin/supprimer";
 	}
