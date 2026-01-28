@@ -29,9 +29,10 @@ public class SecurityConfig {
 								PathPatternRequestMatcher.withDefaults().matcher("/img/**"),
 								PathPatternRequestMatcher.withDefaults().matcher("/admin/register/**"),
 								PathPatternRequestMatcher.withDefaults().matcher("/index/**"))
-						.permitAll().anyRequest().authenticated())
-				.csrf(AbstractHttpConfigurer::disable)
-				.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/admin", true).permitAll());
+						.permitAll().requestMatchers(PathPatternRequestMatcher.withDefaults().matcher("/admin/**"))
+						.hasRole("ADMIN").requestMatchers(PathPatternRequestMatcher.withDefaults().matcher("/user/**"))
+						.hasAnyRole("USER", "ADMIN").anyRequest().authenticated())
+				.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/default", true).permitAll());
 		return http.build();
 	}
 
