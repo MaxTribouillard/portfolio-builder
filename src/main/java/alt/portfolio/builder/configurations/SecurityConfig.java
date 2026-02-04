@@ -22,7 +22,7 @@ public class SecurityConfig {
 	public SecurityFilterChain configure(HttpSecurity http) {
 		http.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests((req) -> req
-						.requestMatchers("/", "/css/**", "/js/**", "/img/**", "/admin/register/**", "/index/**").permitAll()
+						.requestMatchers("/", "/css/**", "/js/**", "/img/**", "/register", "/register/**", "/index/**").permitAll()
 						.requestMatchers("/admin/**").hasRole("ADMIN")
 						.requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
 						.anyRequest().authenticated())

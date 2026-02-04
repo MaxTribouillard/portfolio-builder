@@ -43,7 +43,7 @@
 
                 <div th:if="${activeUser == null}" class="guest-menu">
                     <a href="/login" class="btn btn-outline">Connexion</a>
-                    <a href="/admin/register" class="btn btn-primary">Commencer</a>
+                    <a href="/register" class="btn btn-primary">Commencer</a>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                     </svg>
                     Accéder à mon dashboard
                 </a>
-                <a th:if="${activeUser == null}" href="/admin/register" class="btn btn-primary btn-lg">
+                <a th:if="${activeUser == null}" href="/register" class="btn btn-primary btn-lg">
                     Créer mon portfolio
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="5" y1="12" x2="19" y2="12"/>
@@ -231,7 +231,7 @@
                         </svg>
                         Mon dashboard
                     </a>
-                    <a th:if="${activeUser == null}" href="/admin/register" class="btn btn-primary btn-lg">
+                    <a th:if="${activeUser == null}" href="/register" class="btn btn-primary btn-lg">
                         Commencer gratuitement
                     </a>
                 </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - Portfolio Builder</title>
+    <title>Inscription - Portfolio Builder</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/landing.css">
     <link rel="stylesheet" href="/css/auth.css">
@@ -41,58 +41,91 @@
         </div>
     </nav>
 
-    <!-- Login Section -->
+    <!-- Register Section -->
     <section class="auth-section">
         <div class="auth-container">
             <div class="auth-card">
                 <div class="auth-header">
                     <div class="auth-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-                            <polyline points="10 17 15 12 10 7"/>
-                            <line x1="15" y1="12" x2="3" y2="12"/>
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                            <line x1="20" y1="8" x2="20" y2="14"/>
+                            <line x1="23" y1="11" x2="17" y2="11"/>
                         </svg>
                     </div>
-                    <h1 class="auth-title">Bienvenue !</h1>
-                    <p class="auth-description">Connectez-vous pour accéder à votre dashboard</p>
+                    <h1 class="auth-title">Créer un compte</h1>
+                    <p class="auth-description">Rejoignez Portfolio Builder et créez votre portfolio professionnel</p>
                 </div>
 
-                <!-- Display error message if login failed
-                <div th:if="${param.error}" class="alert alert-error">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="8" x2="12" y2="12"/>
-                        <line x1="12" y1="16" x2="12.01" y2="16"/>
-                    </svg>
-                    <span>Identifiant ou mot de passe incorrect</span>
-                </div>
+                <form method="post" th:action="@{/register}" class="auth-form">
+                    <div class="form-group">
+                        <label for="firstname" class="form-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            Prénom
+                        </label>
+                        <input
+                            id="firstname"
+                            type="text"
+                            name="firstname"
+                            class="form-input"
+                            placeholder="John"
+                            required
+                            autofocus>
+                    </div>
 
-              Display logout message
-                <div th:if="${param.logout}" class="alert alert-success">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <polyline points="22 4 12 14.01 9 11.01"/>
-                    </svg>
-                    <span>Vous avez été déconnecté avec succès</span>
-                </div>-->
+                    <div class="form-group">
+                        <label for="lastname" class="form-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                            Nom
+                        </label>
+                        <input
+                            id="lastname"
+                            type="text"
+                            name="lastname"
+                            class="form-input"
+                            placeholder="Doe"
+                            required>
+                    </div>
 
-                <form method="post" action="/login" class="auth-form">
                     <div class="form-group">
                         <label for="username" class="form-label">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                                 <circle cx="12" cy="7" r="4"/>
                             </svg>
-                            Identifiant
+                            Nom d'utilisateur
                         </label>
                         <input
                             id="username"
                             type="text"
                             name="username"
                             class="form-input"
-                            placeholder="Votre email ou nom d'utilisateur"
-                            required
-                            autofocus>
+                            placeholder="johndoe84"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mail" class="form-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            Email
+                        </label>
+                        <input
+                            id="mail"
+                            type="email"
+                            name="mail"
+                            class="form-input"
+                            placeholder="example@mail.com"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -112,28 +145,21 @@
                             required>
                     </div>
 
-                    <div class="form-options">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="remember-me">
-                            <span class="checkbox-text">Se souvenir de moi</span>
-                        </label>
-                        <a href="#" class="link-primary">Mot de passe oublié ?</a>
-                    </div>
-
                     <button type="submit" class="btn btn-primary btn-block">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-                            <polyline points="10 17 15 12 10 7"/>
-                            <line x1="15" y1="12" x2="3" y2="12"/>
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="8.5" cy="7" r="4"/>
+                            <line x1="20" y1="8" x2="20" y2="14"/>
+                            <line x1="23" y1="11" x2="17" y2="11"/>
                         </svg>
-                        Se connecter
+                        Créer mon compte
                     </button>
                 </form>
 
                 <div class="auth-footer">
                     <p class="auth-footer-text">
-                        Pas encore de compte ?
-                        <a href="/register" class="link-primary">Créer un compte</a>
+                        Vous avez déjà un compte ?
+                        <a href="/login" class="link-primary">Se connecter</a>
                     </p>
                 </div>
             </div>
