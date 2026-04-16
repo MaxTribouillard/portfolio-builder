@@ -23,7 +23,7 @@ import alt.portfolio.builder.services.ProfileService;
 
 @RequestMapping("admin")
 @Controller
-public class AdminController {
+public class AdminUserController {
 
 	@Autowired
 	private AdminService adminService;

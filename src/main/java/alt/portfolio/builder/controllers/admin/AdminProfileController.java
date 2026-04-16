@@ -1,4 +1,4 @@
-package alt.portfolio.builder.controllers;
+package alt.portfolio.builder.controllers.admin;
 
 import java.util.UUID;
 
@@ -17,7 +17,7 @@ import alt.portfolio.builder.services.ProfileService;
 
 @RequestMapping("admin")
 @Controller
-public class ProfileController {
+public class AdminProfileController {
 
 	@Autowired
 	private ProfileService profileService;

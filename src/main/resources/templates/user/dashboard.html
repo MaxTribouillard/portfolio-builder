@@ -6,7 +6,16 @@
 </head>
 <body>
 
-<h1>coucou mec {{activeUser.firstname}}</h1>
+<h1>Dashboard | Connecté : {{activeUser.firstname}}</h1>
+
+<ul>
+    <li>
+        <a href="/user/profile/view">Mes profils</a>
+    </li>
+    <li>
+        <a href="/user/userParams/view">Préférences</a>
+    </li>
+</ul>
 
 <a href="/logout">Se déconnecter</a>
 

@@ -1,4 +1,4 @@
-package alt.portfolio.builder.controllers;
+package alt.portfolio.builder.controllers.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,5 +13,6 @@ public class UserController {
     public String showUserDashboard() {
         return "user/dashboard";
     }
+
 
 }
