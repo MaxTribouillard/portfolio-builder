@@ -41,7 +41,7 @@ public class ProfileController {
     public String createProfile(@ModelAttribute Profile profile, @ModelAttribute("activeUser") User user, RedirectAttributes r){
         profileService.createProfile(profile, user.getId());
         r.addFlashAttribute("addSuccess", "Nouveau profile crée avec succès !");
-        return "redirect:/user/profile/view";
+        return "redirect:/user/profile/";
     }
 
     @GetMapping("/delete/{id}")

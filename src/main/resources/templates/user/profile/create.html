@@ -1,16 +1,46 @@
-{{ > partials/header}}
+{{> partials/header}}
 
-<h1>Créer un profile</h1>
-
-<form class="ui form" method="post" action="/user/profile/create">
-  <div class="field">
-    <label>Nom du profile</label>
-    <input type="text" name="name" placeholder="Nom du profile">
-  </div>
-    <div class="field">
-        <label>Description</label>
-        <textarea name="description" placeholder="Description du profile"></textarea>
-        <button class="ui button" type="submit">Créer</button>
+<main class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow w-full">
+    <div class="mb-8">
+        <a href="/user/profile/" class="inline-flex items-center text-sm font-medium text-slate-400 hover:text-white transition-colors mb-4">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Retour aux profils
+        </a>
+        <h1 class="text-3xl font-bold text-white tracking-tight">Créer un nouveau profil</h1>
+        <p class="mt-2 text-sm text-slate-400">Définissez les informations de base de votre nouveau profil professionnel.</p>
     </div>
-</form>
-{{ > partials/footer}}
+
+    <form method="post" action="/user/profile/create" class="bg-slate-800 border border-slate-700 rounded-2xl shadow-sm overflow-hidden">
+        <div class="px-6 py-8 space-y-6">
+            <div>
+                <label for="name" class="block text-sm font-medium text-white mb-2">Nom du profil</label>
+                <div class="relative">
+                    <input type="text" id="name" name="name" placeholder="Ex: Développeur Full-Stack" required
+                        class="block w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-3 text-white placeholder-slate-500 focus:bg-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-200 sm:text-sm shadow-sm" />
+                </div>
+            </div>
+
+            <div>
+                <label for="description" class="block text-sm font-medium text-white mb-2">Description</label>
+                <div class="relative">
+                    <textarea id="description" name="description" rows="4" placeholder="Décrivez brièvement l'objectif de ce profil..." required
+                        class="block w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-3 text-white placeholder-slate-500 focus:bg-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all duration-200 sm:text-sm shadow-sm resize-none"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-6 py-4 bg-slate-950 border-t border-slate-800 flex items-center justify-end gap-3 rounded-b-2xl">
+            <a href="/user/profile/" class="px-5 py-2.5 text-sm font-medium text-slate-300 bg-slate-800 border border-slate-700 rounded-xl hover:bg-slate-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500">
+                Annuler
+            </a>
+            <button type="submit" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-indigo-500 border border-transparent rounded-xl shadow-sm hover:bg-indigo-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 focus:ring-offset-white">
+                Créer le profil
+            </button>
+        </div>
+    </form>
+</main>
+
+{{> partials/header}}
