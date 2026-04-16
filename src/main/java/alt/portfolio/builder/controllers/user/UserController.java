@@ -1,5 +1,6 @@
 package alt.portfolio.builder.controllers.user;
 
+import alt.portfolio.builder.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,5 +15,10 @@ public class UserController {
         return "user/dashboard";
     }
 
+    @GetMapping("userInfo/view")
+    public String showUserInfo() {
+        User userInfo = new User();
 
+        return "user/userInfo/view";
+    }
 }

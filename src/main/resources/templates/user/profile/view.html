@@ -1,12 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{{ > partials/header}}
 
-<p>On affiche les profils</p>
+{{#addSuccess}}
+<script>
+    $.toast({
+    title: 'NOUVEAU !',
+    message: '{{addSuccess}}',
+    showProgress: 'bottom',
+    classProgress: 'green'
+});
+</script>
+{{/addSuccess}}
 
-</body>
-</html>
+{{#deleteSuccess}}
+<script>
+    $.toast({
+        title: 'Supprimé !',
+        message: '{{deleteSuccess}}',
+        showProgress: 'bottom',
+        classProgress: 'green'
+    });
+</script>
+{{/deleteSuccess}}
+
+<p>Profiles :</p>
+{{#profiles}}
+<p>{{name}} | <a href="/user/profile/info/{{id}}">Consulter</a> | <a href="/user/profile/delete/{{id}}">Supprimer</a></p>
+{{/profiles}}
+
+<a href="/user/profile/create"><button class="ui button">Créer un profile</button></a>
+
+{{ > partials/footer}}

@@ -1,0 +1,16 @@
+{{ > partials/header}}
+
+<h1>Créer un profile</h1>
+
+<form class="ui form" method="post" action="/user/profile/create">
+  <div class="field">
+    <label>Nom du profile</label>
+    <input type="text" name="name" placeholder="Nom du profile">
+  </div>
+    <div class="field">
+        <label>Description</label>
+        <textarea name="description" placeholder="Description du profile"></textarea>
+        <button class="ui button" type="submit">Créer</button>
+    </div>
+</form>
+{{ > partials/footer}}
