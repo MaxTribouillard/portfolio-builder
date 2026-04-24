@@ -2,10 +2,7 @@ package alt.portfolio.builder.entities;
 
 import java.util.UUID;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +12,7 @@ import lombok.Setter;
 public class Rubrique {
 
 	@Id
+	@GeneratedValue
 	private UUID id;
 
 	@Column(length = 100)
@@ -25,5 +23,8 @@ public class Rubrique {
 
 	@ManyToOne()
 	private Profile profile;
+
+	@ManyToOne()
+	private Categorie categorie;
 
 }
