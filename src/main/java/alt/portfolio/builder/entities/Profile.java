@@ -26,7 +26,7 @@ public class Profile {
 	@Column(length = 45, nullable = false)
 	private String name;
 
-	@Column(nullable = false)
+	@Column(name="createdAt", nullable = false)
 	private LocalDateTime createdAt = LocalDateTime.now();
 
 	@Column(length = 10400)

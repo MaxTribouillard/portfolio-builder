@@ -12,4 +12,5 @@ public class WebConfiguration implements WebMvcConfigurer {
 		registry.addViewController("/login").setViewName("/user/formLogin");
 	}
 
+
 }

@@ -19,7 +19,7 @@ import alt.portfolio.builder.services.DbUserService;
 public class SecurityConfig {
 
 	@Bean
-	public SecurityFilterChain configure(HttpSecurity http) {
+	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests((req) -> req
 						.requestMatchers("/", "/css/**", "/js/**", "/img/**", "/register", "/register/**", "/index/**").permitAll()
